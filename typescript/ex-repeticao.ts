@@ -3,10 +3,10 @@ for (let i = 1; i <= 5; i++) {
     console.log(`Número: ${i}`);
 }
 
-let soma = 0;
+let total = 0;
 for (let i = 1; i <= 10; i++)
-    soma = soma + i;
-console.log(`Soma = ${soma}`);
+    total = total + i;
+console.log(`Soma = ${total}`);
 
 console.log('\nTabela-verdade AND');
 for (let a=0; a<=1; a++) {
@@ -23,16 +23,16 @@ for (let a=0; a<=1; a++) {
 }
 
 /* while */
-let num = 0;
-while (num < 5) {
-    console.log("Número: " + num);
+let n = 0;
+while (n < 5) {
+    console.log(`Número: ${n}`);
     num++;
 }
 
 /* do .. while */
 let i = 0;
 do {
-    console.log("Número: " + i);
+    console.log(`Número: ${i}`);
     i++;
 } while (i < 5);
 
