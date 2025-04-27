@@ -1,5 +1,6 @@
 function contagemregressiva(n: number): void {
-    if (n < 0) return;
+    if (n < 0) 
+        return;
     console.log(n);
     contagemregressiva(n - 1);
 }
