@@ -7,8 +7,16 @@ function fibonacci(n: number, memo: Map<number, number> = new Map()): number {
     memo.set(n, result);
     
     return result;
+}
+  
+import * as readline from 'node:readline/promises';
+import { stdin, stdout } from 'node:process';
+const rl = readline.createInterface({ input: stdin, output: stdout });
+    
+async function main() {
+    const num = parseInt(await rl.question("Digite o n-ésimo termo de Fibonacci: "));
+    console.log(`Fibonacci(${num}) = ${fibonacci(num)}`);
+    rl.close();
   }
-  
-  const numero = 40;
-  console.log(`Fibonacci(${numero}) = ${fibonacci(numero)}`);
-  
+    
+main();
