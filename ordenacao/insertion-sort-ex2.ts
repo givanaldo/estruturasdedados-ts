@@ -1,4 +1,4 @@
-import { insertionSort } from "./insertion-sort-ex1";
+import { insertionSort } from "./algoritmos";
 
 // criar vetor aleatório com 100 elementos
 let vetor_aleatorio = [];
@@ -7,7 +7,7 @@ for (let i = 0; i < 100; i++) {
 }
 
 console.log(vetor_aleatorio);
-console.log("Ordenando o vetor...");
+console.log("\nOrdenando o vetor...");
 
 const inicio = performance.now(); // contagem de tempo em milissegundos
 
