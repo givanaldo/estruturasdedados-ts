@@ -1,4 +1,4 @@
-export function bubbleSort1<T>(arr: T[]): T[] {
+export function bubbleSort<T>(arr: T[]): T[] {
   for (let i = 0; i < arr.length; i++) {
       for (let j = 0; j < (arr.length - i -1); j++) {
           if(arr[j] > arr[j+1]) {
@@ -6,21 +6,6 @@ export function bubbleSort1<T>(arr: T[]): T[] {
           }
       }
   }
-  return arr;
-}
-
-export function bubbleSort2<T>(arr: T[]): T[] {
-  const n = arr.length;
-  let swapped: boolean;
-  do {
-    swapped = false;
-    for (let i = 1; i < n; i++) {
-      if (arr[i - 1] > arr[i]) {
-        [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
-        swapped = true;
-      }
-    }
-  } while (swapped);
   return arr;
 }
   
@@ -111,3 +96,33 @@ function partition<T>(arr: T[], lo: number, hi: number): number {
   [arr[i], arr[hi]] = [arr[hi], arr[i]];
   return i;
 }
+
+/*
+export function mergeSort<T>(arr: T[]): T[] {
+  if (arr.length <= 1) return arr.slice();
+
+  const mid = Math.floor(arr.length / 2);
+  const left = mergeSort(arr.slice(0, mid));
+  const right = mergeSort(arr.slice(mid));
+
+  return merge(left, right);
+}
+
+function merge<T>(left: T[], right: T[]): T[] {
+  const result: T[] = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < left.length && j < right.length) {
+    if (left[i] <= right[j]) {
+      result.push(left[i]);
+      i++;
+    } else {
+      result.push(right[j]);
+      j++;
+    }
+  }
+
+  return result.concat(left.slice(i)).concat(right.slice(j));
+}
+*/
