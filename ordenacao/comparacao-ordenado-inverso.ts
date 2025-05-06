@@ -1,9 +1,9 @@
 import { bubbleSort, insertionSort, selectionSort, shellSort } from "./algoritmos";
 import { mergeSort, quickSort } from "./algoritmos";
 
-// criar vetor aleatório
+// criar vetor inversamente ordenado
 let v1 = [];
-for (let i = 1000; i > 0; i--) {
+for (let i = 100000; i > 0; i--) {
   v1.push(i);
 }
 let v2 = [...v1];
@@ -14,25 +14,25 @@ let v6 = [...v1];
 
 console.log("== INICIANDO == ");
 
-console.log("\nVetor original: ", v1);
+//console.log("\nVetor original: ", v1);
 let inicio = performance.now();
 bubbleSort(v1);
 let fim = performance.now();
-console.log("Vetor ordenado: ", v1);
+//console.log("Vetor ordenado: ", v1);
 console.log(`Tempo de execução Bubble sort 1: ${fim - inicio} ms`);
 
-console.log("\nVetor original: ", v2);
+//console.log("\nVetor original: ", v2);
 inicio = performance.now();
 selectionSort(v2);
 fim = performance.now();
-console.log("Vetor ordenado: ", v2);
+//console.log("Vetor ordenado: ", v2);
 console.log(`Tempo de execução Selection sort: ${fim - inicio} ms`);
 
-console.log("\nVetor original: ", v3);
+//console.log("\nVetor original: ", v3);
 inicio = performance.now();
 insertionSort(v3);
 fim = performance.now();
-console.log("Vetor ordenado: ", v3);
+//console.log("Vetor ordenado: ", v3);
 console.log(`Tempo de execução Insertion sort: ${fim - inicio} ms`);
 /*
 console.log("\nVetor original: ", v4);
