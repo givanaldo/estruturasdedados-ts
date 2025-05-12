@@ -3,8 +3,8 @@ import { mergeSort, quickSort } from "./algoritmos";
 
 // criar vetor aleatório
 let v1 = [];
-for (let i = 0; i < 100000; i++) {
-  v1.push(Math.floor(Math.random() * 10000));
+for (let i = 0; i < 10000; i++) {
+  v1.push(Math.floor(Math.random() * 1000));
 }
 let v2 = [...v1];
 let v3 = [...v1];
