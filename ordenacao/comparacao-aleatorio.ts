@@ -4,8 +4,8 @@ import { timSort } from "./timsort";
 
 // criar vetor aleatório
 let v1 = [];
-for (let i = 0; i < 100000; i++) {
-  v1.push(Math.floor(Math.random() * 1000));
+for (let i = 0; i < 1000000; i++) {
+  v1.push(Math.floor(Math.random() * 1000000));
 }
 let v2 = [...v1];
 let v3 = [...v1];
@@ -13,9 +13,10 @@ let v4 = [...v1];
 let v5 = [...v1];
 let v6 = [...v1];
 let v7 = [...v1];
+let v8 = [...v1];
 
 console.log("== INICIANDO == ");
-
+/*
 //console.log("\nVetor original: ", v1);
 let inicio = performance.now();
 bubbleSort(v1);
@@ -36,11 +37,11 @@ insertionSort(v3);
 fim = performance.now();
 //console.log("Vetor ordenado: ", v3);
 console.log(`Tempo de execução Insertion sort: ${fim - inicio} ms`);
-
+*/
 //console.log("\nVetor original: ", v4);
-inicio = performance.now();
+let inicio = performance.now();
 shellSort(v4);
-fim = performance.now();
+let fim = performance.now();
 //console.log("Vetor ordenado: ", v4);
 console.log(`Tempo de execução Shellsort: ${fim - inicio} ms`);
 
@@ -64,3 +65,11 @@ timSort(v7);
 fim = performance.now();
 //console.log("Vetor ordenado: ", v7);
 console.log(`Tempo de execução Timsort: ${fim - inicio} ms`);
+
+//console.log("\nVetor original: ", v8);
+inicio = performance.now();
+v8.sort((a, b) => a - b); // Timsort nativo do JavaScript
+v8.sort();
+fim = performance.now();
+//console.log("Vetor ordenado: ", v8);
+console.log(`Tempo de execução sort padrão do TS: ${fim - inicio} ms`);

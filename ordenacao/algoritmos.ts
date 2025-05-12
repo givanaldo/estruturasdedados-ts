@@ -85,7 +85,8 @@ export function quickSort<T>(arr: T[], lo = 0, hi = arr.length - 1): T[] {
 }
 
 function partition<T>(arr: T[], lo: number, hi: number): number {
-  const pivot = arr[hi];
+  const pivot = arr[hi];    // Pivot é o último elemento
+  
   let i = lo;
   for (let j = lo; j < hi; j++) {
     if (arr[j] < pivot) {
