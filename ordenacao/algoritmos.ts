@@ -97,6 +97,8 @@ function partition<T>(arr: T[], lo: number, hi: number): number {
   return i;
 }
 
+
+
 /*
 export function mergeSort<T>(arr: T[]): T[] {
   if (arr.length <= 1) return arr.slice();
