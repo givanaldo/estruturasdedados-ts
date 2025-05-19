@@ -18,24 +18,25 @@ function randomIdade(): number {
   return Math.floor(Math.random() * 50) + 18;
 }
 
-// Gera 100 alunos aleatórios
+// Gera 10 alunos aleatórios
 const alunos: Aluno[] = [];
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 10; i++) {
   alunos.push(new Aluno(randomNome(), randomCurso(), randomIdade()));
 }
 
 const cmpNome = (a: Aluno, b: Aluno) => a.getNome().localeCompare(b.getNome());
+const cmpIdade = (a: Aluno, b: Aluno) => a.getIdade() - b.getIdade();
 
 // Cópias para testes independentes
 const arrShell = [...alunos];
 const arrMerge = [...alunos];
 const arrQuick = [...alunos];
-/*
+
 console.log('Alunos antes da ordenação:');
 alunos.forEach(aluno => {
   console.log(`Nome: ${aluno.getNome()}, Curso: ${aluno.getCurso()}, Idade: ${aluno.getIdade()}`);
 });
-*/
+
 console.log('\nOrdenando alunos por nome...\n');
 
 console.time('ShellSort');
@@ -47,6 +48,10 @@ const sortedMerge = mergeSort(arrMerge, cmpNome);
 console.timeEnd('MergeSort');
 
 console.time('QuickSort');
-const sortedQuick = quickSort(arrQuick, cmpNome);
+const sortedQuick = quickSort(arrQuick, cmpIdade);
 console.timeEnd('QuickSort');
 
+console.log('Alunos depois da ordenação:');
+sortedQuick.forEach(aluno => {
+  console.log(`Nome: ${aluno.getNome()}, Curso: ${aluno.getCurso()}, Idade: ${aluno.getIdade()}`);
+});
