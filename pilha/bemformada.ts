@@ -4,19 +4,15 @@ export function bemFormada(expressao: string): boolean {
   const pilha = new Stack<string>();
   for (let i = 0; i < expressao.length; i++) {
     const ch = expressao.charAt(i);
-    if (ch === '(' || ch === '[') {
+    if (ch === '(' || ch === '[' || ch === '{') {
       pilha.push(ch);
     } else {
-      if (ch === ')' && pilha.size() > 0) {
-        if (pilha.pop() !== '(') {
-          return false;
-        }
-      }
-      if (ch === ']' && pilha.size() > 0) {
-        if (pilha.pop() !== '[') {
-          return false;
-        }
-      }
+      if (ch === ')' && pilha.size() > 0)
+        if (pilha.pop() !== '(') return false;
+      if (ch === ']' && pilha.size() > 0)
+        if (pilha.pop() !== '[') return false;
+            if (ch === '}' && pilha.size() > 0)
+        if (pilha.pop() !== '{') return false;
     }
   }
   return pilha.size() === 0;
@@ -25,7 +21,7 @@ export function bemFormada(expressao: string): boolean {
 // Testes de exemplo
 const expressoes = [
   '(5+2)',
-  '{[(2*4)+5]*(5/3)}',
+  '{[(2*4)+5]*(5/3}',
   '[()',
   '([((([])))])',
   '([((([]))))]'
