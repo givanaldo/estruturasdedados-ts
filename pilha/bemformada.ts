@@ -11,7 +11,7 @@ export function bemFormada(expressao: string): boolean {
         if (pilha.pop() !== '(') return false;
       if (ch === ']' && pilha.size() > 0)
         if (pilha.pop() !== '[') return false;
-            if (ch === '}' && pilha.size() > 0)
+      if (ch === '}' && pilha.size() > 0)
         if (pilha.pop() !== '{') return false;
     }
   }
@@ -20,11 +20,10 @@ export function bemFormada(expressao: string): boolean {
 
 // Exemplos
 const expressoes = [
-  '(5+2)',
-  '{[(2*4)+5]*(5/3}',
-  '[(2 / 8) + 3]',
-  '([2 + ((([5+9])))])',
-  '([((([]))))]'
+  '(5+2)', // True
+  '{[(2*4)+5]*(5/3}', // false
+  '[(2 / 8) + 3]', // verdadeira
+  '([2 + (6 * (([5+9]*8))])' // falsa
 ];
 
 console.log('Testes de bemFormada:');
