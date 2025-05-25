@@ -6,3 +6,4 @@ export function mdc(n1: number, n2: number): number {
 
 console.log(`MDC(48, 18) = ${mdc(48, 18)}`);
 console.log(`MDC(47, 18) = ${mdc(47, 18)}`);
+console.log(`MDC(1024, 512) = ${mdc(1024, 500)}`);
