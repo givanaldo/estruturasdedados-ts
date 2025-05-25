@@ -23,10 +23,10 @@ function ordenarPorNome(lista: Aluno[]): Aluno[] {
 
 console.log('Alunos ordenados por média (maior para menor):');
 ordenarPorMedia(alunos).forEach(aluno => {
-    console.log(`${aluno.nome} - Matrícula: ${aluno.matricula} - Média: ${aluno.media}`);
+    console.log(aluno.toString());
 });
 
 console.log('\nAlunos ordenados por nome (ordem alfabética):');
 ordenarPorNome(alunos).forEach(aluno => {
-    console.log(`${aluno.nome} - Matrícula: ${aluno.matricula} - Média: ${aluno.media}`);
+    console.log(aluno.toString());
 });
