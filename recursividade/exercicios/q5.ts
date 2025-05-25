@@ -9,4 +9,5 @@ function multiplicacao(n1: number, n2: number): number {
 
 console.log(multiplicacao(3, 4)); 
 console.log(multiplicacao(3, -4)); 
-console.log(multiplicacao(-3, -4)); 
+console.log(multiplicacao(-3, -4));
+console.log(multiplicacao(-3, 4)); 

@@ -10,5 +10,6 @@ function palindromo(palavra: string): boolean {
     return checkPalindromo(0, palavra.length - 1);
 }
 
-console.log(palindromo("radar")); // Verdadeiro
-console.log(palindromo("hello")); // Falso
+console.log(`palindromo("radar") = ${palindromo("radar")}`); 
+console.log(`palindromo("banana") = ${palindromo("banana")}`); 
+console.log(`palindromo("arara") = ${palindromo("arara")}`); 
