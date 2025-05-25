@@ -4,5 +4,9 @@ function somavetor(vetor: number[], i: number): number {
   return vetor[i] + somavetor(vetor, i - 1);
 }
 
+function soma(vetor: number[]): number {
+  return somavetor(vetor, vetor.length-1);
+}
+
 const v = [12, 2, 31, 40, 15];
-console.log(`Soma dos elementos: ${somavetor(v, v.length-1)}`); 
+console.log(`Soma dos elementos: ${soma(v)}`); 
