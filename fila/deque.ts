@@ -1,91 +1,59 @@
-export class Deque<T> {
-    private items: { [key: number]: T }; 
-    private count: number; 
-    private lowestCount: number; 
+// Implementação de um Deque (Double-Ended Queue) genérico em TypeScript.
 
-    constructor() {
-        this.items = {};
-        this.count = 0;
-        this.lowestCount = 0;
-    }
+class Deque<T> {
+    private items: T[] = [];
+
+    constructor() {}
 
     addFront(element: T): void {
-        if (this.isEmpty()) {
-            this.addBack(element); 
-        } else if (this.lowestCount > 0) {
-            this.lowestCount--; 
-            this.items[this.lowestCount] = element;
-        } else {
-            for (let i = this.count; i > 0; i--) {
-                this.items[i] = this.items[i - 1];
-            }
-            this.count++; 
-            this.lowestCount = 0; 
-            this.items[0] = element;
-        }
+        this.items.unshift(element);
     }
 
     addBack(element: T): void {
-        this.items[this.count] = element;
-        this.count++;
+        this.items.push(element);
     }
 
     removeFront(): T | undefined {
         if (this.isEmpty()) {
             return undefined;
         }
-        const result = this.items[this.lowestCount];
-        delete this.items[this.lowestCount];
-        this.lowestCount++;
-        return result;
+        return this.items.shift();
     }
 
     removeBack(): T | undefined {
         if (this.isEmpty()) {
             return undefined;
         }
-        this.count--;
-        const result = this.items[this.count];
-        delete this.items[this.count];
-        return result;
+        return this.items.pop();
     }
 
     peekFront(): T | undefined {
         if (this.isEmpty()) {
             return undefined;
         }
-        return this.items[this.lowestCount];
+        return this.items[0];
     }
 
     peekBack(): T | undefined {
         if (this.isEmpty()) {
             return undefined;
         }
-        return this.items[this.count - 1];
+        return this.items[this.items.length - 1];
     }
 
     isEmpty(): boolean {
-        return this.count - this.lowestCount === 0;
+        return this.items.length === 0;
     }
 
     size(): number {
-        return this.count - this.lowestCount;
+        return this.items.length;
     }
 
     clear(): void {
-        this.items = {};
-        this.count = 0;
-        this.lowestCount = 0;
+        this.items = [];
     }
 
     toString(): string {
-        if (this.isEmpty()) {
-            return "";
-        }
-        let objString = `${this.items[this.lowestCount]}`;
-        for (let i = this.lowestCount + 1; i < this.count; i++) {
-            objString = `${objString},${this.items[i]}`;
-        }
-        return objString;
+        return this.items.join(', ');
     }
 }
