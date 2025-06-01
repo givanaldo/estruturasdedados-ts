@@ -68,4 +68,4 @@ function simularBanco(simTime: number) {
 }
 
 // Executa a simulação por 30 segundos
-simularBanco(30_000);
+simularBanco(30000);

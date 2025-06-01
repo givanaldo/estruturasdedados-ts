@@ -26,6 +26,19 @@ export class Stack<T> {
     return this.items.length;
   }
 
+  clear(): void {
+    this.items = [];
+  }
+
+  toString(): string {
+    if (this.isEmpty()) return "Vazio";
+    
+    // Para visualização, mostra do topo para a base
+    // [Palete C (Topo), Palete B, Palete A (Base)]
+    const reversedItems = [...this.items].reverse();
+    return reversedItems.map((item: any) => `[ID:${item.id} - ${item.produto}]`).join(' -> ');
+  }
+
   // Exibir a pilha
   toArray(): T[] {
     return this.items;
