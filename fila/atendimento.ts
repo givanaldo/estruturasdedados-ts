@@ -3,8 +3,8 @@ import { Queue } from './queue';
 interface Cliente {
   id: number;
   nome: string;
-  arrival: number;       // instante de chegada em ms
-  serviceTime: number;   // duração do atendimento em ms
+  chegada: number;  
+  duracao: number;  
 }
 
 interface Estatistica {
@@ -12,54 +12,54 @@ interface Estatistica {
   atendidos: number;
 }
 
-// Gera um inteiro aleatório entre min e max (inclusive)
+// inteiro aleatório entre min e max
 function rand(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function simularBanco(simTime: number) {
+function simularBanco(tempoSimulacao: number) {
   const fila = new Queue<Cliente>();
   const stats: Estatistica = { esperaTotal: 0, atendidos: 0 };
 
-  let clock = 0;
-  let nextArrival = rand(500, 1500);
-  let atendimentoEndsAt = Infinity;
+  let relogio = 0;
+  let proxChegada = rand(500, 1500);
+  let atendimentoFim = Infinity;
   let atendenteLivre = true;
   let clienteId = 0;
 
-  while (clock <= simTime) {
-    // 1) Chegada: se passamos do próximo arrival
-    if (clock >= nextArrival) {
+  while (relogio <= tempoSimulacao) {
+    // 1) Chegada
+    if (relogio >= proxChegada) {
       const cliente: Cliente = {
         id: clienteId++,
-        nome: `Cliente${clienteId}`,
-        arrival: clock,
-        serviceTime: rand(800, 2000)
+        nome: `Cliente ${clienteId}`,
+        chegada: relogio,
+        duracao: rand(800, 2000)
       };
       fila.enqueue(cliente);
-      console.log(`Chegou ${cliente.nome} em ${clock}ms.`);
-      nextArrival = clock + rand(500, 1500);
+      console.log(`Chegou ${cliente.nome} em ${relogio}ms.`);
+      proxChegada = relogio + rand(500, 1500);
     }
 
     // 2) Fim do atendimento atual
-    if (!atendenteLivre && clock >= atendimentoEndsAt) {
-      console.log(`Atendimento finalizado em ${clock}ms.`);
+    if (!atendenteLivre && relogio >= atendimentoFim) {
+      console.log(`Atendimento finalizado em ${relogio}ms.`);
       atendenteLivre = true;
     }
 
     // 3) Se atendente livre e houver gente na fila, inicia atendimento
     if (atendenteLivre && !fila.isEmpty()) {
       const cliente = fila.dequeue()!;
-      const wait = clock - cliente.arrival;
-      stats.esperaTotal += wait;
+      const tempoEspera = relogio - cliente.chegada;
+      stats.esperaTotal += tempoEspera;
       stats.atendidos++;
 
-      atendimentoEndsAt = clock + cliente.serviceTime;
+      atendimentoFim = relogio + cliente.duracao;
       atendenteLivre = false;
-      console.log(`Iniciou atendimento ao ${cliente.nome} em ${clock}ms (esperou ${wait}ms).`);
+      console.log(`Iniciou atendimento ao ${cliente.nome} em ${relogio}ms (esperou ${tempoEspera}ms).`);
     }
 
-    clock += 100; // avança 100 ms por iteração
+    relogio += 100; // avança 100 ms por iteração
   }
 
   console.log('\n--- Estatísticas ---');
