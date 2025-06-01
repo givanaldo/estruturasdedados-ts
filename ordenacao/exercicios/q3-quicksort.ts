@@ -90,8 +90,10 @@ function medianIndex(arr: number[], i: number, j: number, k: number): number {
 
 // Exemplo de uso:
 const data = [];
-for (let i = 0; i < 1000000; i++)
+for (let i = 0; i < 1000000; i++) {
+  //data.push(i);
   data.push(Math.floor(Math.random() * 1000000));
+}
 
 //const arrayData = [23, 12, 1, 8, 34, 54, 2, 3];
 //const data = [5,3,8,4,2,7,1,10];

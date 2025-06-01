@@ -116,15 +116,15 @@ function shellSortSedgewick(arr: number[]): void {
 
 // Exemplo de uso:
 const arrayData = [];
-for (let i = 0; i < 1000000; i++)
-  arrayData.push(Math.floor(Math.random() * 1000000));
+for (let i = 0; i < 10000000; i++)
+  arrayData.push(Math.floor(Math.random() * 10000000));
 
-//const arrayData = [23, 12, 1, 8, 34, 54, 2, 3];
+//const arrayData = [23, 12, 1, 8, 34, 54, 2, 3, 23, 12];
 let inicio, fim;
 
 const data1 = [...arrayData];
 inicio = performance.now();
-shellSortShell(data1);7
+shellSortShell(data1);
 fim = performance.now();
 console.log(`Runtime Shell sequence: ${(fim - inicio).toFixed(4)} ms`);
 //console.log("Shell sequence:", data1);
