@@ -1,6 +1,6 @@
 // Implementação de um Deque (Double-Ended Queue) genérico em TypeScript.
 
-class Deque<T> {
+export class Deque<T> {
     private items: T[] = [];
 
     constructor() {}
