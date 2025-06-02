@@ -27,7 +27,6 @@ function ehPalindromo(texto: string): boolean {
             return false;
         }
     }
-
     return true; 
 }
 
@@ -37,4 +36,3 @@ console.log(`"Roma me tem amor": ${ehPalindromo("Roma me tem amor")}`);  // true
 console.log(`"hello": ${ehPalindromo("hello")}`);                        // false
 console.log(`"Ovo": ${ehPalindromo("Ovo")}`);                            // true
 console.log(`"Casa": ${ehPalindromo("Casa")}`);                          // false
-console.log(`"": ${ehPalindromo("")}`);                                  // true
