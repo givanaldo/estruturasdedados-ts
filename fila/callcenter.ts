@@ -15,11 +15,13 @@ interface Chamada {
 class CallCenter {
     private filaVIP: Queue<Chamada>;
     private filaComum: Queue<Chamada>;
+    
     private proximoIdChamada: number;
     private tempoAtualSimulacao: number;
 
     private totalTempoEsperaComum: number;
     private totalChamadasAtendidasComum: number;
+
     private totalTempoEsperaVIP: number;
     private totalChamadasAtendidasVIP: number;
 
