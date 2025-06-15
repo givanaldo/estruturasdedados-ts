@@ -1,12 +1,13 @@
 import { bubbleSort, insertionSort, selectionSort, shellSort } from "./algoritmos";
 import { mergeSort, quickSort } from "./algoritmos";
 import { timSort } from "./timsort";
+import { fuzzysort } from "./fuzzysort";
 
 // criar vetor aleatório
 let v1 = [];
-for (let i = 0; i < 1000000; i++) {
-  v1.push(Math.floor(Math.random() * 1000000));
-}
+for (let i = 0; i < 100000; i++)
+  v1.push(Math.floor(Math.random() * 100000));
+
 let v2 = [...v1];
 let v3 = [...v1];
 let v4 = [...v1];
@@ -14,13 +15,15 @@ let v5 = [...v1];
 let v6 = [...v1];
 let v7 = [...v1];
 let v8 = [...v1];
+let v9 = [...v1];
 
 console.log("== INICIANDO == ");
-/*
+let inicio, fim;
+
 //console.log("\nVetor original: ", v1);
-let inicio = performance.now();
+inicio = performance.now();
 bubbleSort(v1);
-let fim = performance.now();
+fim = performance.now();
 //console.log("Vetor ordenado: ", v1);
 console.log(`Tempo de execução Bubble sort 1: ${fim - inicio} ms`);
 
@@ -37,11 +40,19 @@ insertionSort(v3);
 fim = performance.now();
 //console.log("Vetor ordenado: ", v3);
 console.log(`Tempo de execução Insertion sort: ${fim - inicio} ms`);
-*/
+
+//console.log("\nVetor original: ", v3);
+inicio = performance.now();
+fuzzysort(v9);
+fim = performance.now();
+//console.log("Vetor ordenado: ", v3);
+console.log(`Tempo de execução Fuzzy sort: ${fim - inicio} ms`);
+
+
 //console.log("\nVetor original: ", v4);
-let inicio = performance.now();
+inicio = performance.now();
 shellSort(v4);
-let fim = performance.now();
+fim = performance.now();
 //console.log("Vetor ordenado: ", v4);
 console.log(`Tempo de execução Shellsort: ${fim - inicio} ms`);
 
