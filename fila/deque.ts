@@ -1,4 +1,4 @@
-// Implementação de um Deque (Double-Ended Queue) genérico em TypeScript.
+// Implementação de um Deque (Double-Ended Queue) 
 
 export class Deque<T> {
     private items: T[] = [];
