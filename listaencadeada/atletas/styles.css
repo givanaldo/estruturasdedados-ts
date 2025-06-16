@@ -1,0 +1,83 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+}
+
+section {
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#cadastro {
+    background-color: #e3f2fd; /* Azul claro */
+    border-left: 6px solid #2196f3;
+}
+
+#busca-exclusao {
+    background-color: #fce4ec; /* Rosa claro */
+    border-left: 6px solid #e91e63;
+}
+
+#tabela-listagem {
+    background-color: #e8f5e9; /* Verde claro */
+    border-left: 6px solid #4caf50;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+label, input, button {
+    display: block;
+    margin: 6px 0;
+}
+
+input, button {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 300px;
+}
+
+button {
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1976d2;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f5f5f5;
+}
+
+.titulo-secao {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

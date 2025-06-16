@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Atletas - Voleibol Amador</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Cadastro de Atletas - Equipe Amadora de Voleibol</h1>
+
+    <section id="cadastro">
+        <div class="titulo-secao">Cadastrar Atleta</div>
+        <label>Nome:</label><input type="text" id="nome">
+        <label>Posição:</label><input type="text" id="posicao">
+        <label>Altura (cm):</label><input type="number" id="altura">
+        <label>Idade:</label><input type="number" id="idade">
+        <label>Cidade de Origem:</label><input type="text" id="cidade">
+        <button onclick="adicionarAtleta()">Adicionar Atleta</button>
+    </section>
+
+    <section id="busca-exclusao">
+        <div class="titulo-secao">Buscar / Excluir Atleta</div>
+        <label>Nome do Atleta:</label>
+        <input type="text" id="nomeBusca">
+        <button onclick="buscarAtleta()">Buscar</button>
+        <button onclick="excluirAtleta()">Excluir</button>
+    </section>
+
+    <section id="tabela-listagem">
+        <div class="titulo-secao">Lista de Atletas (Ordem Alfabética)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Posição</th>
+                    <th>Altura</th>
+                    <th>Idade</th>
+                    <th>Cidade</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaAtletas">
+                <!-- listagem de atletas aqui -->
+            </tbody>
+        </table>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
