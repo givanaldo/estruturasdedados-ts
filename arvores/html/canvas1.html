@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Visualização de Árvore com SVG</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    svg {
+      border: 1px solid #ccc;
+    }
+    .node {
+      fill: #88c;
+      stroke: #555;
+      stroke-width: 1;
+    }
+    .text {
+      fill: white;
+      font-size: 14px;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+    .line {
+      stroke: #888;
+      stroke-width: 2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Árvore SVG</h1>
+  <svg id="tree-svg" width="800" height="600"></svg>
+
+  <script>
+    class TreeNode {
+      constructor(value) {
+        this.value = value;
+        this.children = [];
+      }
+
+      addChild(child) {
+        this.children.push(child);
+      }
+    }
+
+    const root = new TreeNode("A");
+    const b = new TreeNode("B");
+    const c = new TreeNode("C");
+    const d = new TreeNode("D");
+    root.addChild(b);
+    root.addChild(c);
+    root.addChild(d);
+
+    const e = new TreeNode("E");
+    const f = new TreeNode("F");
+    c.addChild(e);
+    c.addChild(f);
+
+    function layoutTree(node, x, y, spacingX, spacingY, svg, parent = null) {
+      const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+
+      circle.setAttribute("class", "node");
+      circle.setAttribute("cx", x);
+      circle.setAttribute("cy", y);
+      circle.setAttribute("r", 20);
+
+      text.setAttribute("class", "text");
+      text.setAttribute("x", x);
+      text.setAttribute("y", y);
+      text.textContent = node.value;
+
+      if (parent) {
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("class", "line");
+        line.setAttribute("x1", parent.x);
+        line.setAttribute("y1", parent.y);
+        line.setAttribute("x2", x);
+        line.setAttribute("y2", y);
+        svg.appendChild(line);
+      }
+
+      svg.appendChild(circle);
+      svg.appendChild(text);
+
+      const num = node.children.length;
+      const width = (num - 1) * spacingX;
+      let startX = x - width / 2;
+
+      node.children.forEach((child, index) => {
+        layoutTree(child, startX + index * spacingX, y + spacingY, spacingX * 0.8, spacingY, svg, { x, y });
+      });
+    }
+
+    const svg = document.getElementById("tree-svg");
+    layoutTree(root, 400, 50, 200, 100, svg);
+  </script>
+</body>
+</html>
