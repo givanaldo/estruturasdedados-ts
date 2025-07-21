@@ -1,10 +1,19 @@
 import { BinaryTreeNode } from "./BinaryTreeNode";
 
 const root = new BinaryTreeNode("A");
-root.left = new BinaryTreeNode("B");
-root.right = new BinaryTreeNode("C");
-root.left.left = new BinaryTreeNode("D");
-root.left.right = new BinaryTreeNode("E");
-root.right.right = new BinaryTreeNode("F");
 
-root.printTree();
+const nodeB = new BinaryTreeNode("B")
+const nodeC = new BinaryTreeNode("C");
+
+root.left = nodeB;
+root.right = nodeC;
+
+const nodeD = new BinaryTreeNode("D");
+const nodeE = new BinaryTreeNode("E");
+const nodeF = new BinaryTreeNode("F");
+
+nodeB.left = nodeD;
+nodeB.right = nodeE;
+nodeC.left = nodeF;
+
+nodeB.printTree();

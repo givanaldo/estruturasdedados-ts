@@ -5,17 +5,16 @@ function insert<T>(node: BinaryTreeNode<T> | null, value: T): BinaryTreeNode<T> 
     return new BinaryTreeNode(value);
   }
 
-  if (value < node.value) {
+  if (value < node.value)
     node.left = insert(node.left, value);
-  } else {
+  else
     node.right = insert(node.right, value);
-  }
 
   return node;
 }
 
 let tree: BinaryTreeNode<number> | null = null;
-const values = [10, 5, 15, 2, 7];
+const values = [4, 1, 2, 3, 5, 6];
 
 for (const value of values) {
   tree = insert(tree, value);
