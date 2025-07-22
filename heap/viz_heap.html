@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizador de Max Heap</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+    input, button {
+      padding: 0.5rem;
+      margin: 0.25rem;
+      font-size: 1rem;
+    }
+    .heap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .node {
+      background-color: #e0f2fe;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 60px;
+    }
+    .index {
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <h1>Visualizador de Max Heap</h1>
+  <input type="number" id="inputValue" placeholder="Digite um número">
+  <button onclick="insertValue()">Inserir</button>
+  <button onclick="extractMax()">Remover Máximo</button>
+
+  <div class="heap" id="heapDisplay"></div>
+
+  <script>
+    class MaxHeap {
+      constructor() {
+        this.heap = [];
+      }
+
+      insert(value) {
+        this.heap.push(value);
+        this.heapifyUp(this.heap.length - 1);
+      }
+
+      extractMax() {
+        if (this.heap.length === 0) return;
+        if (this.heap.length === 1) return this.heap.pop();
+
+        const max = this.heap[0];
+        this.heap[0] = this.heap.pop();
+        this.heapifyDown(0);
+        return max;
+      }
+
+      heapifyUp(index) {
+        let parent = Math.floor((index - 1) / 2);
+        while (index > 0 && this.heap[index] > this.heap[parent]) {
+          [this.heap[index], this.heap[parent]] = [this.heap[parent], this.heap[index]];
+          index = parent;
+          parent = Math.floor((index - 1) / 2);
+        }
+      }
+
+      heapifyDown(index) {
+        const length = this.heap.length;
+        while (true) {
+          let largest = index;
+          const left = 2 * index + 1;
+          const right = 2 * index + 2;
+
+          if (left < length && this.heap[left] > this.heap[largest]) largest = left;
+          if (right < length && this.heap[right] > this.heap[largest]) largest = right;
+
+          if (largest === index) break;
+
+          [this.heap[index], this.heap[largest]] = [this.heap[largest], this.heap[index]];
+          index = largest;
+        }
+      }
+    }
+
+    const heap = new MaxHeap();
+
+    function insertValue() {
+      const input = document.getElementById('inputValue');
+      const value = parseInt(input.value);
+      if (!isNaN(value)) {
+        heap.insert(value);
+        input.value = '';
+        renderHeap();
+      }
+    }
+
+    function extractMax() {
+      heap.extractMax();
+      renderHeap();
+    }
+
+    function renderHeap() {
+      const container = document.getElementById('heapDisplay');
+      container.innerHTML = '';
+
+      heap.heap.forEach((val, idx) => {
+        const node = document.createElement('div');
+        node.className = 'node';
+        node.innerHTML = `<div>${val}</div><div class='index'>índice ${idx}</div>`;
+        container.appendChild(node);
+      });
+    }
+  </script>
+</body>
+</html>
